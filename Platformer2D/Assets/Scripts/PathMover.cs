@@ -1,17 +1,12 @@
 using UnityEngine;
 
-public class PointMover : MonoBehaviour
+public class PathMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private Transform[] _waypoints;
+    [SerializeField] private SpriteReversal _sprite;
 
     private int _currentPoint = 0;
-    private SpriteRenderer _renderer;
-
-    private void Awake()
-    {
-        _renderer = GetComponent<SpriteRenderer>();
-    }
 
     private void Update()
     {
@@ -24,11 +19,6 @@ public class PointMover : MonoBehaviour
 
         float direction = _waypoints[_currentPoint].position.x - transform.position.x;
 
-        ReflectSprite(direction);
-    }
-
-    private void ReflectSprite(float direction)
-    {
-        _renderer.flipX = direction < 0;
+        _sprite.ReflectSprite(direction);
     }
 }

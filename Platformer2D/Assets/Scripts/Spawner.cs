@@ -17,6 +17,7 @@ public class Spawner : MonoBehaviour
 
     private void DestroyObject(Coin coin)
     {
+        coin.CoinSelected -= DestroyObject;
         Destroy(coin.gameObject);
     }
 

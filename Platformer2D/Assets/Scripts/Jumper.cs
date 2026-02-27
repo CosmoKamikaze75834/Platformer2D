@@ -1,14 +1,14 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Jump : MonoBehaviour
+public class Jumper : MonoBehaviour
 {
     [SerializeField] private float _jumpForce = 5f;
-    [SerializeField] private Animator _animator;
+    [SerializeField] private GroundDetector _ground;
+    [SerializeField] private AnimationActions _anim;
 
     private Rigidbody2D _rigidbody;
     private float _horizontalForce = 0f;
-    private float _groundTolerance = 0.005f;
 
     private void Awake()
     {
@@ -17,20 +17,15 @@ public class Jump : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.W) && _ground.IsGrounded())
         {
             _rigidbody.AddForce(new Vector2(_horizontalForce, _jumpForce), ForceMode2D.Impulse);
-            _animator.SetBool("IsJump", true);
+            _anim.EstablishJump(true);
         }
 
-        if (IsGrounded() && _animator.GetBool("IsJump"))
+        if (_ground.IsGrounded() && _anim.GetJumpState())
         {
-            _animator.SetBool("IsJump", false);
+            _anim.EstablishJump(false);
         }
-    }
-
-    private bool IsGrounded()
-    {
-        return Mathf.Abs(_rigidbody.velocity.y) < _groundTolerance;
     }
 }
