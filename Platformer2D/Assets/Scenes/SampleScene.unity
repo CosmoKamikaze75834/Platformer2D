@@ -383,6 +383,7 @@ GameObject:
   - component: {fileID: 726195849}
   - component: {fileID: 726195850}
   - component: {fileID: 726195851}
+  - component: {fileID: 726195852}
   m_Layer: 0
   m_Name: Idle (32x32)_0
   m_TagString: Untagged
@@ -531,6 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587229cfb3294754581542f9ed0a7050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputService: {fileID: 726195852}
   _jumpForce: 5
   _ground: {fileID: 726195850}
   _anim: {fileID: 726195848}
@@ -567,6 +569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00fb8f879de79774287816242c4817e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputService: {fileID: 726195852}
   _speed: 5
   _animation: {fileID: 726195848}
   _sprite: {fileID: 726195849}
@@ -582,6 +585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea444514e00e1424d86cf12f2b68090a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputService: {fileID: 726195852}
   _movement: {fileID: 726195846}
 --- !u!114 &726195848
 MonoBehaviour:
@@ -632,6 +636,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coin: {fileID: 7750487615898318418, guid: c4cbcdc3e388ac54fb958f718361cf4e, type: 3}
+--- !u!114 &726195852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726195837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df56277f6b59e44bad21315835f63d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &841202254
 GameObject:
   m_ObjectHideFlags: 0

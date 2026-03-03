@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Boost : MonoBehaviour
 {
+    [SerializeField] private InputService _inputService;
     [SerializeField] private PlayerMovement _movement;
 
     private float _maxSpeed = 10;
@@ -9,7 +10,7 @@ public class Boost : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (_inputService.BostPressed)
         {
             _movement.ChangeSpeed(_maxSpeed);
         }

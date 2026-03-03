@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    public event Action<Coin> CoinSelected;
+    public event Action<Coin> ItemSelected;
 
     public void CallAction()
     {
-        CoinSelected?.Invoke(this);
+        ItemSelected?.Invoke(this);
     }
 }

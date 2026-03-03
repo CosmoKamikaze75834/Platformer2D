@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Jumper : MonoBehaviour
 {
+    [SerializeField] private InputService _inputService;
     [SerializeField] private float _jumpForce = 5f;
     [SerializeField] private GroundDetector _ground;
     [SerializeField] private AnimationActions _anim;
@@ -17,7 +18,7 @@ public class Jumper : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && _ground.IsGrounded())
+        if (_inputService.JumpPressed && _ground.IsGrounded())
         {
             _rigidbody.AddForce(new Vector2(_horizontalForce, _jumpForce), ForceMode2D.Impulse);
             _anim.EstablishJump(true);

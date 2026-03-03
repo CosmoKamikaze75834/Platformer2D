@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
 
     private void DestroyObject(Coin coin)
     {
-        coin.CoinSelected -= DestroyObject;
+        coin.ItemSelected -= DestroyObject;
         Destroy(coin.gameObject);
     }
 
@@ -26,7 +26,7 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < _spawnPoint.Length; i++)
         {
             Coin coin = Instantiate(_coin, _spawnPoint[i].position, Quaternion.identity);
-            coin.CoinSelected += DestroyObject;
+            coin.ItemSelected += DestroyObject;
 
             yield return _wait;
         }
