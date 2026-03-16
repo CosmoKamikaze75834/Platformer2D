@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Collector : MonoBehaviour
 {
-    [SerializeField] private Coin _coin;
+    [SerializeField] private Health _health;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -10,5 +10,17 @@ public class Collector : MonoBehaviour
         {
             coin.CallAction();
         }
+        else if(collision.TryGetComponent(out Apple apple))
+        {
+            apple.ItemSelected += OnAppleSelected;
+            apple.CallEvent();
+
+            Destroy(apple.gameObject);
+        }
+    }
+
+    private void OnAppleSelected(int amount)
+    {
+        _health.Heal(amount);
     }
 }
