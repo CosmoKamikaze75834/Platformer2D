@@ -38,7 +38,7 @@ public class AnimationActions : MonoBehaviour
         return _animator.GetBool(IsDead);
     }
 
-    public void TriggerDefeat()
+    public void TriggerHurt()
     {
         _animator.SetTrigger(Hurt);
     }

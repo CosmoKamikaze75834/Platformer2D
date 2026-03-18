@@ -12,14 +12,14 @@ public class Collector : MonoBehaviour
         }
         else if(collision.TryGetComponent(out Apple apple))
         {
-            apple.ItemSelected += OnAppleSelected;
+            apple.ItemSelected += ProcessEvent;
             apple.CallEvent();
 
             Destroy(apple.gameObject);
         }
     }
 
-    private void OnAppleSelected(int amount)
+    private void ProcessEvent(int amount)
     {
         _health.Heal(amount);
     }

@@ -6,10 +6,9 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private PlayerAttackDetector _attackDetector;
     [SerializeField] private PlayerAttackAnimation _attackAnimation;
     [SerializeField] private InputService _inputService;
-    [SerializeField] private AnimationActions _animаtion;
 
-    private bool _isAttack;//атаковываем?
-    private bool _isDamageDown;//урон уже был нанесён?
+    private bool _isAttack;
+    private bool _isDamageDown;
 
     private void Update()
     {
@@ -18,30 +17,29 @@ public class PlayerCombat : MonoBehaviour
             StartAttack();
         }
 
-        if (_isAttack)//атакуем
+        if (_isAttack)
         {
-            TryDealDamage();
+            ApplyDamageOnce();
             CheckAttackEnd();
         }
     }
 
     private void StartAttack()
     {
-        _animаtion.TriggerAttack();//запускаем анимацию атаки
+        _attackAnimation.StartAnimationAttack();
         _isAttack = true;
         _isDamageDown = false;
         _attackAnimation.ResetState();
     }
 
-    private void TryDealDamage()
+    private void ApplyDamageOnce()
     {
         if (_isDamageDown)
             return;
 
-        bool damageApplied = _attackDetector.Attack();
-        Debug.Log("Провели атаку");
+        bool isDamageApplied = _attackDetector.Attack();
 
-        if (damageApplied)
+        if (isDamageApplied)
             _isDamageDown = true;
     }
 

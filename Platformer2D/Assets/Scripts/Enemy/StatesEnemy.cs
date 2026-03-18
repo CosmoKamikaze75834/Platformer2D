@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class StatesEnemy : MonoBehaviour
 {
+    private const string NameObject = "Player";
+
     [SerializeField] private EnemyVision _enemyVision;
     [SerializeField] private Attack _attack;
-    [SerializeField] private Harassment _harassment;
+    [SerializeField] private Follow _follow;
     [SerializeField] private Patrol _patrol;
     [SerializeField] private Comeback _comeback;
 
@@ -23,7 +25,7 @@ public class StatesEnemy : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag(NameObject).transform;
         chill = true;
     }
 
@@ -31,19 +33,14 @@ public class StatesEnemy : MonoBehaviour
     {
         if (_enemyVision.IsPlayerDetected(player))
         {
-            Debug.Log("зматели игрока");
-
             angry = true;
             chill = false;  
             goBack = false;
 
             if (_enemyVision.IsPlayerAttackRange(player))
             {
-                Debug.Log("игрок в радиусе атаки");
-
                 if (Time.time >= _nextAttackTime)
                 {
-                    Debug.Log("Сейчас будет атака");
                     _attack.AttackHero();
                     _nextAttackTime = _attackDelay + Time.time;
                 }
@@ -60,7 +57,7 @@ public class StatesEnemy : MonoBehaviour
             _patrol.PatrollingTerritory(_waypoints, _speed);
 
         else if (angry == true)
-            _harassment.MoveToPlayer(player, _speed);
+            _follow.MoveToPlayer(player, _speed);
 
         else if (goBack == true)
             GoBack();

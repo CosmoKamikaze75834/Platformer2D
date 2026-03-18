@@ -5,6 +5,8 @@ public class DeathPlayer : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private Health _health;
 
+    private float _timePlay = 0;
+
     private void OnEnable()
     {
         _health.Died += StopScene;
@@ -18,9 +20,7 @@ public class DeathPlayer : MonoBehaviour
     public void StopScene()
     {
         _player.GetComponent<PlayerMovement>().enabled = false;
-        var rigidbody2D = _player.GetComponent<Rigidbody2D>();
-        rigidbody2D.velocity = Vector2.zero;
 
-        Time.timeScale = 0;
+        Time.timeScale = _timePlay;
     }
 }

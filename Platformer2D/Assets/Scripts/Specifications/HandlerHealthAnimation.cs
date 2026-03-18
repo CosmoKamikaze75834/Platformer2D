@@ -19,7 +19,7 @@ public class HandlerHealthAnimation : MonoBehaviour
 
     private void InformDamage()
     {
-        _animation.TriggerDefeat();
+        _animation.TriggerHurt();
     }
 
     private void InformDeath()

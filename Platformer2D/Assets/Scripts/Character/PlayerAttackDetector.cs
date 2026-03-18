@@ -2,28 +2,27 @@ using UnityEngine;
 
 public class PlayerAttackDetector : MonoBehaviour
 {
-    [SerializeField] private int _attackDamage = 10;//урон
-    [SerializeField] private Transform _attackPoint;//точка откуда исходит урон
-    [SerializeField] private float _attackRange = 0.5f;//радиус атаки
-    [SerializeField] private LayerMask _enemyLaers;//слой врагов
+    [SerializeField] private int _attackDamage = 10;
+    [SerializeField] private Transform _attackPoint;
+    [SerializeField] private float _attackRange = 0.5f;
+    [SerializeField] private LayerMask _enemyLaers;
 
     public bool Attack()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _enemyLaers);
 
-        bool damageApplied = false;
+        bool isdamageApplied = false;
 
         foreach (Collider2D enemy in hitEnemies)
         {
             if (enemy.TryGetComponent(out Health health))
             {
                 health.TakeDamage(_attackDamage);
-                Debug.Log("Нанесли урон" + enemy.name);
-                damageApplied = true;
+                isdamageApplied = true;
             }
         }
 
-        return damageApplied;
+        return isdamageApplied;
     }
 
     private void OnDrawGizmosSelected()

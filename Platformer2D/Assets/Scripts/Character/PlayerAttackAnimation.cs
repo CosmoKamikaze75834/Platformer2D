@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class PlayerAttackAnimation : MonoBehaviour
 {
+    private static string StateHit = "Hit";
+
     [SerializeField] private AnimationActions _animаtion;
 
-
-
-    private bool _isHitState;//анимация в состоянии удара?
-    private int _index = 0;//базовый слой аниматора
+    private bool _isHitState;
+    private int _index = 0;
 
     public void ResetState()
     {
@@ -16,17 +16,14 @@ public class PlayerAttackAnimation : MonoBehaviour
 
     public bool IsAttackFinished()
     {
-        //какое сейчас состояние проигрывается
         AnimatorStateInfo stateInfo = _animаtion.Animator.GetCurrentAnimatorStateInfo(_index);
 
-        //если состояние Hit
-        if (stateInfo.IsName("Hit"))
+        if (stateInfo.IsName(StateHit))
         {
             _isHitState = true;
             return false;
         }
 
-        //анимация проигралась
         if (_isHitState)
         {
             _isHitState = false;
@@ -34,5 +31,10 @@ public class PlayerAttackAnimation : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void StartAnimationAttack()
+    {
+        _animаtion.TriggerAttack();
     }
 }

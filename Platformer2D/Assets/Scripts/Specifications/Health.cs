@@ -31,7 +31,6 @@ public class Health : MonoBehaviour
     {
         if (_currentHealth <= _minHealth)
         {
-            Debug.Log("Герой умер");
             _currentHealth = _minHealth;
             _isDead = true;
             Die();

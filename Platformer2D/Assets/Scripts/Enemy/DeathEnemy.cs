@@ -1,27 +1,32 @@
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class DeathEnemy : MonoBehaviour
 {
     [SerializeField] private Enemy _enemy;
     [SerializeField] private Health _health;
 
+    private Rigidbody2D _rigidbody;
+
+    private void Awake()
+    {
+        _rigidbody = _enemy.GetComponent<Rigidbody2D>();
+    }
+
     private void OnEnable()
     {
-        _health.Died += StopComponent;
+        _health.Died += StopComponents;
     }
 
     private void OnDisable()
     {
-        _health.Died -= StopComponent;
+        _health.Died -= StopComponents;
     }
 
-    public void StopComponent()
+    public void StopComponents()
     {
         _enemy.GetComponent<Collider2D> ().enabled = false;
         _enemy.GetComponent<StatesEnemy> ().enabled = false;
 
-        var rigidbody2D = _enemy.GetComponent<Rigidbody2D>();
-        rigidbody2D.velocity = Vector2.zero;
+        _rigidbody.velocity = Vector2.zero;
     }
 }
