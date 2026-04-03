@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Attack : MonoBehaviour
+public class Attacker : MonoBehaviour
 {
     [SerializeField] private AnimationActions _anim;
     [SerializeField] private Health _playerHealth;

@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 2469360142100879384}
   - component: {fileID: 4454472159832058103}
   - component: {fileID: 1839251781605286000}
-  - component: {fileID: 1281227436892469455}
+  - component: {fileID: 8690461467727615813}
   m_Layer: 6
   m_Name: enemy1
   m_TagString: Untagged
@@ -672,13 +672,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyVision: {fileID: 5403731366157116754}
-  _attack: {fileID: 2469360142100879384}
-  _follow: {fileID: 1281227436892469455}
+  _attacker: {fileID: 2469360142100879384}
+  _stalker: {fileID: 8690461467727615813}
   _patrol: {fileID: 5909975074042253817}
-  _comeback: {fileID: 7819279919335391640}
+  _patrolReturner: {fileID: 7819279919335391640}
+  _player: {fileID: 8841165056542917981, guid: 06672e6b5b87a154b8739631b10e8855, type: 3}
   _speed: 2
   _waypoints:
-  - {fileID: 0}
+  - {fileID: 6843932435009213751}
   - {fileID: 0}
 --- !u!95 &2429065272700535764
 Animator:
@@ -713,6 +714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458f689e132a2684797ae5f62b486795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 0}
 --- !u!114 &8890980852003484769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -834,7 +836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 4454472159832058103}
   _health: {fileID: 8890980852003484769}
---- !u!114 &1281227436892469455
+--- !u!114 &8690461467727615813
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -843,7 +845,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7999771681230583947}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a47d2a6b80eb94949a8591fdc1b5f650, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b69a8f4f969b1a4a920128b6a3d0198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 3166658578039089839}

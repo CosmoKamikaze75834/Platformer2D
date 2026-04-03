@@ -24,9 +24,17 @@ public class DeathEnemy : MonoBehaviour
 
     public void StopComponents()
     {
-        _enemy.GetComponent<Collider2D> ().enabled = false;
-        _enemy.GetComponent<StatesEnemy> ().enabled = false;
+        DisableComponent<Collider2D>();
+        DisableComponent<StatesEnemy>();
 
         _rigidbody.velocity = Vector2.zero;
+    }
+
+    private void DisableComponent<T>() where T : Behaviour
+    {
+        if(_enemy.TryGetComponent(out T component))
+        {
+            component.enabled = false;
+        }
     }
 }

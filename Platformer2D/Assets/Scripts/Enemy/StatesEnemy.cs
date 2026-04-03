@@ -2,73 +2,69 @@ using UnityEngine;
 
 public class StatesEnemy : MonoBehaviour
 {
-    private const string NameObject = "Player";
-
     [SerializeField] private EnemyVision _enemyVision;
-    [SerializeField] private Attack _attack;
-    [SerializeField] private Follow _follow;
-    [SerializeField] private Patrol _patrol;
-    [SerializeField] private Comeback _comeback;
+    [SerializeField] private Attacker _attacker;
+    [SerializeField] private Stalker _stalker;
+    [SerializeField] private Patrolling _patrol;
+    [SerializeField] private PatrolReturner _patrolReturner;
+    [SerializeField] private Transform _player;
 
     [SerializeField] private float _speed;
     [SerializeField] private Transform[] _waypoints;
 
     private int _pointReturn = 0;
-    private Transform player;
 
-    private bool chill = false;
-    private bool angry = false;
-    private bool goBack = false;
+    private bool _isChill = false;
+    private bool _isAngry = false;
+    private bool _isGoBack = false;
 
     private float _attackDelay = 2f;
     private float _nextAttackTime;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag(NameObject).transform;
-        chill = true;
+        _isChill = true;
     }
 
     private void Update()
     {
-        if (_enemyVision.IsPlayerDetected(player))
+        if (_enemyVision.IsPlayerDetected(_player))
         {
-            angry = true;
-            chill = false;  
-            goBack = false;
+            _isAngry = true;
+            _isChill = false;  
+            _isGoBack = false;
 
-            if (_enemyVision.IsPlayerAttackRange(player))
+            if (_enemyVision.IsPlayerAttackRange(_player))
             {
                 if (Time.time >= _nextAttackTime)
                 {
-                    _attack.AttackHero();
+                    _attacker.AttackHero();
+                    _attacker.AttackHero();
                     _nextAttackTime = _attackDelay + Time.time;
                 }
             }
         }
         else
         {
-            goBack = true;
-            angry = false;
-            chill = true;
+            _isGoBack = true;
+            _isAngry = false;
+            _isChill = true;
         }
 
-        if (chill == true)
-            _patrol.PatrollingTerritory(_waypoints, _speed);
-
-        else if (angry == true)
-            _follow.MoveToPlayer(player, _speed);
-
-        else if (goBack == true)
+        if (_isChill == true)
+            _patrol.FollowToPoint(_waypoints, _speed);
+        else if (_isAngry == true)
+            _stalker.MoveToPlayer(_player, _speed);
+        else if (_isGoBack == true)
             GoBack();
     }
 
     private void GoBack()
     {
-        if (_comeback.IsReturnPatrol(_waypoints[_pointReturn], _speed))
+        if (_patrolReturner.IsReturnPatrol(_waypoints[_pointReturn], _speed))
         {
-            goBack = false;
-            chill = true;
+            _isGoBack = false;
+            _isChill = true;
         }
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Comeback : MonoBehaviour
+public class PatrolReturner : MonoBehaviour
 {
     private float _distance = 0.1f;
 
@@ -8,6 +8,8 @@ public class Comeback : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, targetPoint.position, speed * Time.deltaTime);
 
-        return Vector2.Distance(transform.position, targetPoint.position) < _distance;
+        Vector2 direction = transform.position - targetPoint.position;
+
+        return direction.sqrMagnitude < _distance;
     }
 }

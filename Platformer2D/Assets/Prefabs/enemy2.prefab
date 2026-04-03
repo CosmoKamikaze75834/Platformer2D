@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 4458114640630828227}
   - component: {fileID: 2938957412540939192}
   - component: {fileID: 5056792798660602000}
-  - component: {fileID: 4679523866415168692}
+  - component: {fileID: 5776834589233059223}
   m_Layer: 6
   m_Name: enemy2
   m_TagString: Untagged
@@ -641,13 +641,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyVision: {fileID: 3914776314942519829}
-  _attack: {fileID: 1397839389163878788}
-  _follow: {fileID: 4679523866415168692}
+  _attacker: {fileID: 1397839389163878788}
+  _stalker: {fileID: 5776834589233059223}
   _patrol: {fileID: 2506541043997462994}
-  _comeback: {fileID: 4458114640630828227}
-  _speed: 4
+  _patrolReturner: {fileID: 4458114640630828227}
+  _player: {fileID: 8841165056542917981, guid: 06672e6b5b87a154b8739631b10e8855, type: 3}
+  _speed: 2
   _waypoints:
-  - {fileID: 0}
+  - {fileID: 6063537120907792301}
   - {fileID: 0}
 --- !u!95 &4491045031806637505
 Animator:
@@ -682,6 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458f689e132a2684797ae5f62b486795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 0}
 --- !u!114 &8679544333983829319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -803,7 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0055ba761634664aa372aec1fa5004f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4679523866415168692
+--- !u!114 &5776834589233059223
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -812,7 +814,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7100420736863387577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a47d2a6b80eb94949a8591fdc1b5f650, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b69a8f4f969b1a4a920128b6a3d0198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 3439975882455295908}

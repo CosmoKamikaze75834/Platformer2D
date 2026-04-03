@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Follow : MonoBehaviour
+public class Stalker : MonoBehaviour
 {
     [SerializeField] private SpriteReversal _sprite;
     [SerializeField] private LayerMask _layerMask;

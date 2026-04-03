@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyVision : MonoBehaviour
@@ -7,12 +8,14 @@ public class EnemyVision : MonoBehaviour
 
     public bool IsPlayerDetected(Transform player)
     {
-        return Vector2.Distance(transform.position, player.position) < _stoppingDistance;
+        Vector2 direction = transform.position - player.position;
+        return direction.sqrMagnitude < _stoppingDistance;
     }
 
     public bool IsPlayerAttackRange(Transform player)
     {
-        return Vector2.Distance(transform.position, player.position) < _attackDistance;
+        Vector2 direction = transform.position - player.position;
+        return direction.sqrMagnitude < _attackDistance;
     }
 
     private void OnDrawGizmosSelected()
