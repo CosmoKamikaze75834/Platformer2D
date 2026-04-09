@@ -937,4 +937,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 7301836305003778993}
-  _health: {fileID: 5389888202600869843}

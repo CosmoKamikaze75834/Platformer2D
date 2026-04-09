@@ -17,7 +17,7 @@ public class PlayerAttackDetector : MonoBehaviour
         {
             if (enemy.TryGetComponent(out Health health))
             {
-                health.TakeDamage(_attackDamage);
+                health.Reduce(_attackDamage);
                 isdamageApplied = true;
             }
         }

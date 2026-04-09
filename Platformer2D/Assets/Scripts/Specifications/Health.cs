@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
         HealthChanged?.Invoke();
     }
 
-    public void TakeDamage(int damage)
+    public void Reduce(int damage)
     {
         if (_isDead)
             return;
@@ -55,7 +55,7 @@ public class Health : MonoBehaviour
         Died?.Invoke();
     }
 
-    public void Heal(int amount)
+    public void Increase(int amount)
     {
         if (amount <= 0) return;
 

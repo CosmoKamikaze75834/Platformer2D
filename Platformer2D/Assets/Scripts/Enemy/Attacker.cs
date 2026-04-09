@@ -9,6 +9,6 @@ public class Attacker : MonoBehaviour
     public void AttackHero()
     {
         _anim.TriggerAttack();
-        _playerHealth.TakeDamage(_damage);
+        _playerHealth.Reduce(_damage);
     }
 }

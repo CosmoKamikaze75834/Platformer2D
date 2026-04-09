@@ -9,18 +9,26 @@ public class DeathPlayer : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.Died += StopScene;
+        _health.Died += EstablishPause;
     }
 
     private void OnDisable()
     {
-        _health.Died -= StopScene;
+        _health.Died -= EstablishPause;
     }
 
-    public void StopScene()
+    public void EstablishPause()
     {
-        _player.GetComponent<PlayerMovement>().enabled = false;
+        TurnOffMovement();
 
         Time.timeScale = _timePlay;
+    }
+
+    private void TurnOffMovement()
+    {
+        if (_player.TryGetComponent(out PlayerMovement component))
+        {
+            component.enabled = false;
+        }
     }
 }
