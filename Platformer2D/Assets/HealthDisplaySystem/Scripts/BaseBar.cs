@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 public abstract class BaseBar : BaseIndicator
 {
-    [SerializeField] protected Slider Slider;
+    [SerializeField] protected Slider _slider;
 
     private void Start()
     {
-        Slider.interactable = false;
+        _slider.interactable = false;
         UpdateValue(Health.Current, Health.Max);
     }
 }

@@ -5,7 +5,7 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private int _min = 0;
 
-    [field: SerializeField] public int Current { get; private set; }
+    [field: SerializeField] public float Current { get; private set; }
     [field: SerializeField] public int Max { get; private set; } = 100;
 
     private bool _isDead = false;
@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
         HealthChanged?.Invoke();
     }
 
-    public void Reduce(int damage)
+    public void Reduce(float damage)
     {
         if (_isDead)
             return;
@@ -55,7 +55,7 @@ public class Health : MonoBehaviour
         Died?.Invoke();
     }
 
-    public void Increase(int amount)
+    public void Increase(float amount)
     {
         if (amount <= 0) return;
 
