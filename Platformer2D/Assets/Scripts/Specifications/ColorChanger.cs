@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class ColorChange : MonoBehaviour
+public class ColorChanger : MonoBehaviour
 {
     [SerializeField] private float _alpha = 0.3f;
 

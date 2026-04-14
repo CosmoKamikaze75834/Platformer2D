@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class TextManager : MonoBehaviour
+public class CoinsCounterUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private Collector collector;

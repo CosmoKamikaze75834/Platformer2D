@@ -5,7 +5,7 @@ using UnityEngine;
 public class Vampirism : MonoBehaviour
 {
     [SerializeField] private InputService _inputService;
-    [SerializeField] private ColorChange _colorChange;
+    [SerializeField] private ColorChanger _colorChange;
     [SerializeField] private PlayerVision  _playerVision;
     [SerializeField] private VampirismEffect _effect;
 
@@ -26,7 +26,7 @@ public class Vampirism : MonoBehaviour
     {
         if (_inputService.VampirismPressed)
         {
-            if (_isReady == true)
+            if (_isReady)
             {
                 _isReady = false;
                 _coroutine = StartCoroutine(LaunchingAbility());
